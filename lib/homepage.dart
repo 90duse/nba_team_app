@@ -10,9 +10,9 @@ class Homepage extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 186, 186, 186),
       appBar: AppBar(
         title: const Text('Basktell Teams'),
-        backgroundColor: const Color.fromARGB(255, 186, 186, 186),
+        backgroundColor: Color.fromARGB(255, 30, 202, 240),
       ),
-      drawer: Mydrawer(),
+      drawer: const Mydrawer(),
       body: FutureBuilder(
           future: getTeam(),
           builder: ((context, snapshot) {
