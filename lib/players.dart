@@ -2,8 +2,8 @@ import 'package:basketballteams/drawer.dart';
 import 'package:basketballteams/logic/logic_code.dart';
 import 'package:flutter/material.dart';
 
-class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+class Playerspage extends StatelessWidget {
+  const Playerspage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,21 +14,32 @@ class Homepage extends StatelessWidget {
       ),
       drawer: Mydrawer(),
       body: FutureBuilder(
-          future: getTeam(),
+          future: showplayers(),
           builder: ((context, snapshot) {
             // if loading is done
             if (snapshot.connectionState == ConnectionState.done) {
               return ListView.builder(
-                itemCount: teams.length,
+                itemCount: players.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(2.0),
                     child: ListTile(
                       tileColor: Colors.white,
-                      title: Text(teams[index].teamname),
-                      subtitle: Text(teams[index].city),
-                      leading: Text(teams[index].abbreviation),
-                      trailing: Text(teams[index].division),
+                      title: Row(
+                        children: [
+                          Text(players[index].firstname),
+                          Text(players[index].lastname),
+                        ],
+                      ),
+                      subtitle: Text(players[index].lastname),
+                      leading: Row(
+                        children: [
+                          Text(players[index].jerseynumber),
+                          Text(players[index].height.toString()),
+                          Text(players[index].weight.toString()),
+                        ],
+                      ),
+                      trailing: Text(players[index].nationality),
                     ),
                   );
                 },
